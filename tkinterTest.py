@@ -4,14 +4,15 @@ from geopy.geocoders import Nominatim
 import geocoder
 from pprint import pprint
 import json
+import tkinter as tk
 
-import kivy
-from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
+
+root = tk.Tk()
+root.wm_geometry("500x500")
+root.title('find food')
+
+frame = tk.Frame(root)
+frame.grid(row=0, column=0, sticky="news")
 
 
 #find location
@@ -62,36 +63,13 @@ def findFood(cost):
 
     l5 = getElements(l4)
 
+    print(l5)
+
     return l5
 
 
 
-#kivy
+button = tk.Button(frame, text='Enter', command=lambda: findFood(1))
+button.pack()
 
-class LoginScreen(GridLayout):
-
-
-
-    def __init__(self, **kwargs):
-        super(LoginScreen, self).__init__(**kwargs)
-        def foodFinder(price):
-            print(findFood(price))
-        self.cols = 2
-        self.cheap = Button(text = "Cheap")
-        self.cheap.bind(on_press= foodFinder(1))
-        self.add_widget(self.cheap)
-        self.modest = Button(text = "Modest")
-        self.add_widget(self.modest)
-        self.fancy = Button(text = "Trying to impress someone")
-        self.add_widget(self.fancy)
-        self.rich = Button(text = "Im worth more than 90% of the population")
-        self.add_widget(self.rich)
-
-
-class MyApp(App):
-
-    def build(self):
-        return LoginScreen()
-
-if __name__ == '__main__':
-    MyApp().run()
+root.mainloop()
