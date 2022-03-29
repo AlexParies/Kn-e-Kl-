@@ -27,10 +27,11 @@ loc = g.address
 
 #find a resturaunt
 def findFood(cost):
+
     #find stores
     yelp_api = YelpAPI("rNgON3wacga5ckN2nuz12nvElvXtWEiWjAs-b1NYY29qW1kZ3XEtbiIZuVxWoRZqRJ_n-ktAPwmwVKcMlSC6cewuT1F6MnGJLWEwV_xNT1dOfmqT5Jqf_cSwh-9BYnYx")
 
-    response = yelp_api.search_query(term='food', location=loc, limit=1, price=cost, open_now=True)
+    response = yelp_api.search_query(price=cost,term='restaurants', location=loc, limit=1,  open_now=True)
 
 
     #convert to usable data
@@ -112,18 +113,18 @@ class Demo(MDApp):
 
 
     def price1(self,obj):
-        print(findFood(1))
+        print(findFood("1"))
 
 
 
     def price2(self,obj):
 
-        print(findFood(2))
+        print(findFood("2"))
     def price3(self,obj):
 
-        print(findFood(3))
+        print(findFood("3"))
     def price4(self,obj):
 
-        print(findFood(4))
+        print(findFood("4"))
 if __name__=="__main__":
     Demo().run()
