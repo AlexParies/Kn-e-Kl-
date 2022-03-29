@@ -12,13 +12,13 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-
+from kivy.uix.boxlayout import BoxLayout
+from kivymd.app import MDApp
+from kivymd.uix.screen import Screen
+from kivymd.uix.button import MDRectangleFlatButton
 
 #find location
 g = geocoder.ip('me')
-print(g.latlng)
-print(g.address)
-
 loc = g.address
 
 
@@ -62,36 +62,59 @@ def findFood(cost):
 
     l5 = getElements(l4)
 
-    return l5
+    l6 = str(l5)
+
+    def split(word):
+        return word.split()
+
+    l7 = split(l6)
+    print(l7)
+    final = ""
+    rejected = []
+
+    for i in l7:
+        if i == "name" or ":" in i:
+            rejected.append(i)
+        else:
+            if "name" in final:
+                final = ""
+            final += i
+            final += " "
+
+    return final
+
 
 
 
 #kivy
-
-class LoginScreen(GridLayout):
-
-
-
-    def __init__(self, **kwargs):
-        super(LoginScreen, self).__init__(**kwargs)
-        def foodFinder(price):
-            print(findFood(price))
-        self.cols = 2
-        self.cheap = Button(text = "Cheap")
-        self.cheap.bind(on_press= foodFinder(1))
-        self.add_widget(self.cheap)
-        self.modest = Button(text = "Modest")
-        self.add_widget(self.modest)
-        self.fancy = Button(text = "Trying to impress someone")
-        self.add_widget(self.fancy)
-        self.rich = Button(text = "Im worth more than 90% of the population")
-        self.add_widget(self.rich)
-
-
-class MyApp(App):
+class Demo(MDApp):
 
     def build(self):
-        return LoginScreen()
+        screen = Screen()
 
-if __name__ == '__main__':
-    MyApp().run()
+        cheap= MDRectangleFlatButton(text="Cheap",pos_hint={'center_x':0.1,'center_y':0.5},on_release=self.price1)
+        screen.add_widget(cheap)
+
+        modest= MDRectangleFlatButton(text="Modest",pos_hint={'center_x':0.3,'center_y':0.5},on_release=self.price2)
+        screen.add_widget(modest)
+
+        expensive= MDRectangleFlatButton(text="Willing to spend a bit",pos_hint={'center_x':0.5,'center_y':0.5},on_release=self.price3)
+        screen.add_widget(expensive)
+
+        fancy= MDRectangleFlatButton(text="you are trying to impress someone",pos_hint={'center_x':0.8,'center_y':0.5},on_release=self.price4)
+        screen.add_widget(fancy)
+
+
+
+        return screen
+    def price1(self,obj):
+        print(findFood(1))
+
+    def price2(self,obj):
+        print(findFood(2))
+    def price3(self,obj):
+        print(findFood(3))
+    def price4(self,obj):
+        print(findFood(4))
+if __name__=="__main__":
+    Demo().run()
