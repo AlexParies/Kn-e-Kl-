@@ -17,6 +17,8 @@ from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.button import MDRectangleFlatButton
 
+import tkinter as tk
+
 #find location
 g = geocoder.ip('me')
 loc = g.address
@@ -68,7 +70,6 @@ def findFood(cost):
         return word.split()
 
     l7 = split(l6)
-    print(l7)
     final = ""
     rejected = []
 
@@ -87,34 +88,42 @@ def findFood(cost):
 
 
 #kivy
+
 class Demo(MDApp):
 
     def build(self):
         screen = Screen()
 
-        cheap= MDRectangleFlatButton(text="Cheap",pos_hint={'center_x':0.1,'center_y':0.5},on_release=self.price1)
-        screen.add_widget(cheap)
+        self.cheap= MDRectangleFlatButton(text="Cheap",pos_hint={'center_x':0.1,'center_y':0.5},on_release=self.price1)
+        screen.add_widget(self.cheap)
 
-        modest= MDRectangleFlatButton(text="Modest",pos_hint={'center_x':0.3,'center_y':0.5},on_release=self.price2)
-        screen.add_widget(modest)
+        self.modest= MDRectangleFlatButton(text="Modest",pos_hint={'center_x':0.3,'center_y':0.5},on_release=self.price2)
+        screen.add_widget(self.modest)
 
-        expensive= MDRectangleFlatButton(text="Willing to spend a bit",pos_hint={'center_x':0.5,'center_y':0.5},on_release=self.price3)
-        screen.add_widget(expensive)
+        self.expensive= MDRectangleFlatButton(text="Willing to spend a bit",pos_hint={'center_x':0.5,'center_y':0.5},on_release=self.price3)
+        screen.add_widget(self.expensive)
 
-        fancy= MDRectangleFlatButton(text="you are trying to impress someone",pos_hint={'center_x':0.8,'center_y':0.5},on_release=self.price4)
-        screen.add_widget(fancy)
+        self.fancy= MDRectangleFlatButton(text="you are trying to impress someone",pos_hint={'center_x':0.8,'center_y':0.5},on_release=self.price4)
+        screen.add_widget(self.fancy)
 
 
 
         return screen
+
+
     def price1(self,obj):
         print(findFood(1))
 
+
+
     def price2(self,obj):
+
         print(findFood(2))
     def price3(self,obj):
+
         print(findFood(3))
     def price4(self,obj):
+
         print(findFood(4))
 if __name__=="__main__":
     Demo().run()
