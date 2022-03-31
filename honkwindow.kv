@@ -1,0 +1,71 @@
+WindowManager:
+    ButtonWindow:
+    ResultWindow:
+
+<ButtonWindow>:
+    name: "henry"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "Choose A Price"
+            font_size: 32
+
+        Button:
+            text: "Cheap"
+            font_size: 32
+            on_press: app.FindFood("1")
+            on_release:
+                app.root.current = "dennis"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Modest"
+            font_size: 32
+            on_press: app.FindFood("2")
+            on_release:
+                app.root.current = "dennis"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Fancy-ish"
+            font_size: 32
+            on_press: app.FindFood("3")
+            on_release:
+                app.root.current = "dennis"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Luxouruois"
+            font_size: 32
+            on_press: app.FindFood("4")
+            on_release:
+                app.root.current = "dennis"
+                root.manager.transition.direction = "left"
+
+
+<ResultWindow>:
+    name: "dennis"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: app.fname()
+            font_size: 32
+
+        Button:
+            text: "Take me there!"
+            font_size: 24
+            on_release:
+                app.OpenLink()
+
+        Button:
+            text: "Noooo go back!"
+            font_size: 32
+            on_release:
+                app.root.current = "henry"
+                root.manager.transition.direction = "right"
