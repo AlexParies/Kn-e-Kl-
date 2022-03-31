@@ -10,40 +10,53 @@ WindowManager:
         size: root.width, root.height
 
         Label:
-            text: "Choose A Price"
-            font_size: 32
+            text: "Choose A Price Group"
+            font_size: 48
+            color: .57, 1, .98, .8
 
         Button:
-            text: "Cheap"
-            font_size: 32
-            on_press: app.FindFood("1")
+            text: "Broke"
+            font_size: 48
+            on_press:
+                app.FindFood("1")
+
             on_release:
                 app.root.current = "dennis"
                 root.manager.transition.direction = "left"
+            color: .37, 1, .31, .8
 
         Button:
-            text: "Modest"
-            font_size: 32
-            on_press: app.FindFood("2")
+            text: "Well... it's not McDonalds"
+            font_size: 48
+            on_press:
+                app.FindFood("2")
+
             on_release:
                 app.root.current = "dennis"
                 root.manager.transition.direction = "left"
+            color: 1, .94, .33, .8
 
         Button:
-            text: "Fancy-ish"
-            font_size: 32
-            on_press: app.FindFood("3")
+            text: "Going to have to leave a tip"
+            font_size: 48
+            on_press:
+                app.FindFood("3")
+
             on_release:
                 app.root.current = "dennis"
                 root.manager.transition.direction = "left"
+            color: 1, .6, .18, .8
 
         Button:
-            text: "Luxouruois"
-            font_size: 32
-            on_press: app.FindFood("4")
+            text: "The bill is probably higher than my IQ"
+            font_size: 48
+            on_press:
+                app.FindFood("4")
+
             on_release:
                 app.root.current = "dennis"
                 root.manager.transition.direction = "left"
+            color: 1, .18, .18, .8
 
 
 <ResultWindow>:
@@ -54,18 +67,21 @@ WindowManager:
         size: root.width, root.height
 
         Label:
-            text: app.fname()
-            font_size: 32
+            text: "the restuarant name should be here"
+            font_size: 24
+            color: .57, 1, .98, .8
 
         Button:
-            text: "Take me there!"
-            font_size: 24
+            text: "Take Me There!"
+            font_size: 48
             on_release:
                 app.OpenLink()
+            color: .37, 1, .31, .8
 
         Button:
-            text: "Noooo go back!"
-            font_size: 32
+            text: "Maybe this one isnt right for you"
+            font_size: 48
             on_release:
                 app.root.current = "henry"
                 root.manager.transition.direction = "right"
+            color: 1, .18, .18, .8

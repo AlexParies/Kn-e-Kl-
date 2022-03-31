@@ -1,5 +1,4 @@
+yelpapi
 geocoder
 geopy
-yelpapi
 kivy
-kivymd

@@ -26,7 +26,7 @@ class WindowManager(ScreenManager):
 
 kv = Builder.load_file("honkwindow.kv")
 
-class Honk(App):
+class No_Clue(App):
     global link
     link = ""
     global final
@@ -41,7 +41,7 @@ class Honk(App):
 
         yelp_api = YelpAPI("rNgON3wacga5ckN2nuz12nvElvXtWEiWjAs-b1NYY29qW1kZ3XEtbiIZuVxWoRZqRJ_n-ktAPwmwVKcMlSC6cewuT1F6MnGJLWEwV_xNT1dOfmqT5Jqf_cSwh-9BYnYx")
 
-        response = yelp_api.search_query(price=cost,term='restaurants', location=loc, limit=20,  open_now=True)
+        response = yelp_api.search_query(price=cost,term='restaurants', location=loc, limit=30,  open_now=True)
 
         #convert to usable data
         data = json.dumps(response, indent=4)
@@ -55,21 +55,17 @@ class Honk(App):
             names.append(x2)
         final = randy.choice(names)
         link+=final
-        print(final)
+        #print(final)
         return final
 
     def OpenLink(self):
-        print("Link Opened")
-        print(link)
+        #print("Link Opened")
+        #print(link)
         webbrowser.open(link)
-
-    def fname(self):
-        self.final2 = final
-        return self.final2
 
     def build(self):
         return kv
 
 
 if __name__=="__main__":
-    Honk().run()
+    No_Clue().run()
